@@ -543,9 +543,9 @@ function! fzf#vim#branchfiles(args, ...)
     return s:warn('Not in git repo')
   endif
   return s:fzf('bfiles', {
-  \ 'source':  '(git diff --name-only HEAD $(git merge-base HEAD master))|sort|uniq',
+  \ 'source':  '(git diff --name-only master)|sort|uniq',
   \ 'dir':     root,
-  \ 'options': '-m --prompt "GitFiles> "'
+  \ 'options': '-m --prompt "BranchFiles> "'
   \}, a:000)
 endfunction
 
