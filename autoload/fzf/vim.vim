@@ -534,6 +534,22 @@ function! fzf#vim#gitfiles(args, ...)
 endfunction
 
 " ------------------------------------------------------------------
+"  BFiles
+" ------------------------------------------------------------------
+
+function! fzf#vim#branchfiles(args, ...)
+  let root = s:get_git_root()
+  if empty(root)
+    return s:warn('Not in git repo')
+  endif
+  return s:fzf('bfiles', {
+  \ 'source':  '(git diff --name-only HEAD $(git merge-base HEAD master))|sort|uniq',
+  \ 'dir':     root,
+  \ 'options': '-m --prompt "GitFiles> "'
+  \}, a:000)
+endfunction
+
+" ------------------------------------------------------------------
 " Buffers
 " ------------------------------------------------------------------
 function! s:find_open_window(b)
