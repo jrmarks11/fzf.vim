@@ -493,6 +493,10 @@ function! fzf#vim#history(...)
   \}, a:000)
 endfunction
 
+function! fzf#vim#second_to_last()
+  execute 'e ' . s:all_files()[2]
+endfunction
+
 " ------------------------------------------------------------------
 " GFiles[?]
 " ------------------------------------------------------------------
